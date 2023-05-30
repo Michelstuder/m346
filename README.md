@@ -1,5 +1,6 @@
 # m346
 
+## Lab 4.1 & 4.2
 ![alt text](https://github.com/Michelstuder/m346/blob/KN02/HTML.png)
 HTML-Seite 4.1, inkl. URL
 
@@ -20,3 +21,7 @@ Liste der Dateien im Bucket
 
 ![alt text](https://github.com/Michelstuder/m346/blob/KN02/BucketProperties.png)
 Eigenschaften von "Static Web Hosting"
+
+## SSH Connection
+![alt text](https://github.com/Michelstuder/m346/blob/KN02/SSH-Connection.png)
+![alt text](https://github.com/Michelstuder/m346/blob/KN02/Ubuntu_Instance.png)
