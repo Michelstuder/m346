@@ -25,3 +25,7 @@ Eigenschaften von "Static Web Hosting"
 ## SSH Connection
 ![alt text](https://github.com/Michelstuder/m346/blob/KN02/SSH-Connection.png)
 ![alt text](https://github.com/Michelstuder/m346/blob/KN02/Ubuntu_Instance.png)
+
+## SSH-Key und Cloud-init
+![](https://github.com/Michelstuder/m346/blob/KN02/Ubuntu_Instance_V2.png)
+![](https://github.com/Michelstuder/m346/blob/KN02/cloud-init_V2.yaml)
