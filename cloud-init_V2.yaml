@@ -1,0 +1,15 @@
+#cloud-config
+users: # Collection von Benutzern
+  - name: ubuntu # Der Benutzername des ersten Benutzers
+    sudo: ALL=(ALL) NOPASSWD:ALL # sudo Regeln für diesen Benutzer
+    groups: users, admin # Benutzer "ubuntu" wird den Gruppen "users" und "admin" hinzugefügt.
+    home: /home/ubuntu # Das Heimatverzeichnis des Benutzers "ubuntu" wird auf "/home/ubuntu" festgelegt.
+    shell: /bin/bash # Die Standard-Shell des Benutzers "ubuntu" wird auf "/bin/bash" gesetzt.
+    ssh_authorized_keys: # Der öffentliche SSH-Schlüssel für den Benutzer "ubuntu" wird festgelegt.
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCotgSSoV21eeE490JYxfCoY71vxw28RTFjpMUBe1br8tlXkGJBJmh05xDvfM3dl50rsni3cFJEx2ZSZUrSY0weCQjgNpjeNFXmBue60UiHzXDo0IveiU455h0JNMnIBNGEqPPeZ9+dy4sMS7Olk9Z728lzMkQcJKKQZ7VIOeP+z+KbRNs/EScg+NkkVh9kS85oTl/imUxkoTcNUXklf8LptkguxSfGOVDJRwa09L7KuOFMHTuso8LOtSjCkOagbr5UgbbzK7tdTzXMBVV8rJi7sBnsdQbLzCwUy+NhpL76t9bJ6MjxTL1OiqGvSwLUTi/jNvnWBQw1LCpuWtzRFcBGN aws-key       
+ssh_pwauth: false # Die Passwort-SSH-Authentifizierung wird deaktiviert.
+disable_root: false # Die Deaktivierung des Root-Benutzers wird nicht aktiviert.
+package_update: true # Das System soll nach der Initialisierung Paketaktualisierungen durchführen.
+packages: # Die Pakete "curl" und "wget" sollen installiert werden.
+  - curl 
+  - wget 
