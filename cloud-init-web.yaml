@@ -1,0 +1,50 @@
+#cloud-config
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    home: /home/ubuntu
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCAbNSk6qBKa/d61K9KNiRPMygyTinMrMI0zobNwCqLyrYRhCmhgXUMQIdr6uri5KmMlZ1j5SxNqyV0ut2bhlemISXl2NBHUj47OAe+bZyjikO3RWWJhnLkQRl14I309z90VAUm9EwlCN9oJl5YD+o09pvdZgKz+ie5Wb3hzx1JCiZP+puQFSKaWc9SAiHeUuyTo5yCOMPDVaIoKdcT7oBq23nCsX61YVvIfe/JRSn7Y3LfuYzxZxZuq4BSHUPDcaLHbAJ6x8WF/Bu/NiNvrG8GOil1XUzYqAiQCJI6OepqSyooZbB5YK0we4zhY3daTD55RB4da3w5e4yEtTBLSYD7 aws-key
+ssh_pwauth: false
+disable_root: false
+package_update: true
+packages:
+  - apache2
+  - php
+  - libapache2-mod-php
+  - php-mysqli
+  - adminer
+runcmd:
+  - sudo a2enconf adminer
+  - sudo systemctl restart apache2
+write_files:
+  - path: /var/www/html/db.php
+    content: |
+      <?php
+        //database
+        $servername = "172.31.87.172";
+        $username = "admin";
+        $password = "password";
+        $dbname = "mysql";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "select Host, User from mysql.user;";
+        $result = $conn->query($sql);
+        while($row = $result->fetch_assoc()){
+                echo($row["Host"] . " / " . $row["User"] . "<br />");
+        }
+        //var_dump($result);
+      ?>
+  - path: /var/www/html/info.php
+    content: |
+      <?php
+      phpinfo();
+      ?>
